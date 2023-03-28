@@ -56,7 +56,7 @@ class PlayerList: UITableViewController {
     @IBAction func unwindFromDetailView(segue: UIStoryboardSegue) {
         //Activated when returning from DetailView
         guard segue.identifier == "Save Unwind" else { return }
-        let sourceViewController = segue.source as! DetailView
+        let sourceViewController = segue.source as! PlayerDetailView
 
         if let player = sourceViewController.player {
             if let indexOfExistingPlayer = PlayerList.team.firstIndex(of: player) {
@@ -76,13 +76,13 @@ class PlayerList: UITableViewController {
         tableView.reloadData()
     }
     
-    @IBSegueAction func editPlayer(_ coder: NSCoder, sender: Any?) -> DetailView? {
+    @IBSegueAction func editPlayer(_ coder: NSCoder, sender: Any?) -> PlayerDetailView? {
         //Activated when moving to DetailView
         guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else { return nil }
         //Make sure the cell is a cell
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let detailView = DetailView(coder: coder)
+        let detailView = PlayerDetailView(coder: coder)
         detailView?.player = PlayerList.team[indexPath.row]
 
         return detailView

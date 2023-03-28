@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S1C-sC-tTk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yif-m3-veO">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -87,12 +87,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeO-EN-csG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="356.48854961832058" y="37.323943661971832"/>
+            <point key="canvasLocation" x="1283.206106870229" y="37.323943661971832"/>
         </scene>
         <!--New Player-->
         <scene sceneID="uyg-i7-PQo">
             <objects>
-                <viewController id="Skw-le-CqV" customClass="DetailView" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Skw-le-CqV" customClass="PlayerDetailView" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nnf-4k-7fr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,6 +123,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
+                                                            <action selector="nameEdited:" destination="Skw-le-CqV" eventType="editingChanged" id="PYA-Ad-YxD"/>
                                                             <action selector="nameReturnTapped:" destination="Skw-le-CqV" eventType="primaryActionTriggered" id="NXj-7e-Zyc"/>
                                                         </connections>
                                                     </textField>
@@ -148,6 +149,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
+                                                            <action selector="scoreEdited:" destination="Skw-le-CqV" eventType="editingChanged" id="ShK-kh-f8n"/>
                                                             <action selector="scoreReturnTapped:" destination="Skw-le-CqV" eventType="primaryActionTriggered" id="uY4-99-h4V"/>
                                                         </connections>
                                                     </textField>
@@ -193,7 +195,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="playerNametextField" destination="aeh-xu-TWW" id="Wv3-nc-f79"/>
+                        <outlet property="playerNameTextField" destination="aeh-xu-TWW" id="RCC-Oh-gj2"/>
                         <outlet property="playerScoreTextField" destination="YGE-8i-pwS" id="8uy-Uz-TKb"/>
                         <outlet property="saveButton" destination="K7Q-Q3-oIH" id="wdF-Gp-eOx"/>
                     </connections>
@@ -201,12 +203,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRj-gj-BwJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="rsr-aa-CSq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2202" y="37"/>
+            <point key="canvasLocation" x="3127.4809160305344" y="36.619718309859159"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="3sT-hz-7sv">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vKI-nd-qzY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="S1C-sC-tTk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="f3O-Pr-GQz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mna-xK-vF3">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -215,9 +219,8 @@
                         <segue destination="ETq-XB-NQF" kind="relationship" relationship="rootViewController" id="gEi-eh-cgH"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vKI-nd-qzY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-548" y="38"/>
+            <point key="canvasLocation" x="377.86259541984731" y="37.323943661971832"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HX6-Cg-QEZ">
@@ -235,10 +238,259 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fag-QW-0rS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="37"/>
+            <point key="canvasLocation" x="2202.290076335878" y="36.619718309859159"/>
+        </scene>
+        <!--Games-->
+        <scene sceneID="kyT-Bw-JRK">
+            <objects>
+                <tableViewController id="49r-E1-IHj" customClass="GamesList" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="0Gv-29-y9O">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Player Cell" id="Vda-Bh-ExG" customClass="PlayerCell" customModule="Score_Keeper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="54.333332061767578"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vda-Bh-ExG" id="kYO-YN-5np">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="54.333332061767578"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="At3-9o-8Wj">
+                                            <rect key="frame" x="20" y="11" width="353" height="32.333333333333336"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="253" verticalHuggingPriority="251" image="Profile Placeholder Image" translatesAutoresizingMaskIntoConstraints="NO" id="yOb-Bx-r8l">
+                                                    <rect key="frame" x="0.0" y="0.0" width="32.333333333333336" height="32.333333333333336"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32.329999999999998" id="hoD-1q-MmA"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db2-Uz-R9m">
+                                                    <rect key="frame" x="37.333333333333336" y="0.0" width="121.66666666666666" height="32.333333333333336"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="751" verticalHuggingPriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="88W-nc-KU2">
+                                                    <rect key="frame" x="164" y="0.0" width="94" height="32.333333333333336"/>
+                                                    <connections>
+                                                        <action selector="stepperValueChanged:" destination="Vda-Bh-ExG" eventType="valueChanged" id="jK1-6g-PyF"/>
+                                                    </connections>
+                                                </stepper>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Score Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sx4-ZD-VHY">
+                                                    <rect key="frame" x="263" y="0.0" width="90" height="32.333333333333336"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="At3-9o-8Wj" firstAttribute="top" secondItem="kYO-YN-5np" secondAttribute="topMargin" id="Bv5-Ns-dT0"/>
+                                        <constraint firstItem="At3-9o-8Wj" firstAttribute="trailing" secondItem="kYO-YN-5np" secondAttribute="trailingMargin" id="Vlr-Km-NW3"/>
+                                        <constraint firstItem="At3-9o-8Wj" firstAttribute="leading" secondItem="kYO-YN-5np" secondAttribute="leadingMargin" id="dWg-Js-kSN"/>
+                                        <constraint firstItem="At3-9o-8Wj" firstAttribute="centerY" secondItem="kYO-YN-5np" secondAttribute="centerY" id="tAI-0G-wlz"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="playerNameLabel" destination="db2-Uz-R9m" id="UTr-zy-9zo"/>
+                                    <outlet property="playerProfilePicture" destination="yOb-Bx-r8l" id="EKs-1E-fHS"/>
+                                    <outlet property="playerScoreLabel" destination="sx4-ZD-VHY" id="zzk-Az-vcj"/>
+                                    <outlet property="scoreStepper" destination="88W-nc-KU2" id="gyx-HM-wn2"/>
+                                    <segue destination="n8F-aP-GnC" kind="presentation" identifier="Edit Item" id="dWh-Zb-Z43"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="49r-E1-IHj" id="GKo-nf-jO8"/>
+                            <outlet property="delegate" destination="49r-E1-IHj" id="Z5l-1s-Dda"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Games" id="NVc-P9-ioc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rXF-Gl-vsn">
+                            <connections>
+                                <segue destination="n8F-aP-GnC" kind="presentation" identifier="Add Item" id="3yu-da-dni"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yAg-eO-EeV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281.679389312977" y="717.6056338028169"/>
+        </scene>
+        <!--New Player-->
+        <scene sceneID="z25-re-PCL">
+            <objects>
+                <viewController id="UAq-VU-feC" customClass="DetailView" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ra0-WJ-SN9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ozp-hb-BzO">
+                                <rect key="frame" x="20" y="166" width="353" height="437"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0Z4-50-Sgn">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="437"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Enj-di-G1P">
+                                                <rect key="frame" x="0.0" y="0.0" width="353" height="95"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6I-ff-do2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="cEW-bN-AQu"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pTD-GX-pr2">
+                                                        <rect key="frame" x="0.0" y="55" width="353" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="p2D-vi-1Y9"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="nameReturnTapped:" destination="UAq-VU-feC" eventType="primaryActionTriggered" id="bto-zU-Yfj"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="KWo-2B-FeZ">
+                                                <rect key="frame" x="0.0" y="188.66666666666669" width="353" height="95"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-Gy-AjL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="beJ-Dz-gMb"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f7h-bF-XbZ">
+                                                        <rect key="frame" x="0.0" y="55" width="353" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="9GX-Fm-TVP"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="scoreReturnTapped:" destination="UAq-VU-feC" eventType="primaryActionTriggered" id="s9E-9p-Z8b"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGP-M7-Jtj">
+                                                <rect key="frame" x="0.0" y="377" width="353" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="wol-BV-s7v"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Save" cornerStyle="small">
+                                                    <backgroundConfiguration key="background" strokeWidth="2">
+                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="strokeColor" systemColor="labelColor"/>
+                                                    </backgroundConfiguration>
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="M8L-ya-QpV" kind="unwind" identifier="Save Unwind" unwindAction="unwindFromDetailViewWithSegue:" id="8Sv-Bn-mdh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1SE-0x-QdY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1SE-0x-QdY" firstAttribute="trailing" secondItem="Ozp-hb-BzO" secondAttribute="trailing" constant="20" id="PGq-1h-yoJ"/>
+                            <constraint firstItem="Ozp-hb-BzO" firstAttribute="top" secondItem="1SE-0x-QdY" secondAttribute="top" constant="110" id="ea5-eM-jgO"/>
+                            <constraint firstItem="1SE-0x-QdY" firstAttribute="bottom" secondItem="Ozp-hb-BzO" secondAttribute="bottom" constant="180" id="oLh-Pf-4lN"/>
+                            <constraint firstItem="Ozp-hb-BzO" firstAttribute="leading" secondItem="1SE-0x-QdY" secondAttribute="leading" constant="20" id="oPb-a1-ImS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Player" id="vht-22-yuG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="smj-mi-7oq">
+                            <connections>
+                                <segue destination="M8L-ya-QpV" kind="unwind" identifier="Cancel Unwind" unwindAction="unwindFromDetailViewWithSegue:" id="OM7-wF-fzA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="playerNametextField" destination="pTD-GX-pr2" id="dof-81-oY2"/>
+                        <outlet property="playerScoreTextField" destination="f7h-bF-XbZ" id="jjP-58-YWy"/>
+                        <outlet property="saveButton" destination="hGP-M7-Jtj" id="pOW-U4-YO1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fc0-x7-quQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="M8L-ya-QpV" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3127.4809160305344" y="717.6056338028169"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="tL1-jX-wA6">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ma0-WN-ak5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="qk9-eP-Vfk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="bVr-Sg-ddI"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fbi-SS-I3y">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="49r-E1-IHj" kind="relationship" relationship="rootViewController" id="Bkb-X6-y7R"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="376.3358778625954" y="717.6056338028169"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dgX-xU-amK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n8F-aP-GnC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2D9-dG-ofj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UAq-VU-feC" kind="relationship" relationship="rootViewController" destinationCreationSelector="editPlayer:sender:" id="tQZ-ip-ll2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHg-kW-dfv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2202.290076335878" y="717.6056338028169"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="YJT-XD-vOJ">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Yif-m3-veO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KSd-35-fmx">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="S1C-sC-tTk" kind="relationship" relationship="viewControllers" id="fkn-Vk-VYd"/>
+                        <segue destination="qk9-eP-Vfk" kind="relationship" relationship="viewControllers" id="GBm-Bo-jf5"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dRA-Ev-abi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-550.38167938931292" y="377.46478873239437"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="3yu-da-dni"/>
         <segue reference="Me2-Zz-cX0"/>
     </inferredMetricsTieBreakers>
     <resources>
