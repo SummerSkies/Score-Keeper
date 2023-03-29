@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 struct Game {
+    var icon = UIImage(systemName: "dice.fill")
     var type: String
     var winner: Player
     var players: [Player]

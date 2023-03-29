@@ -17,14 +17,14 @@ class PlayerCell: UITableViewCell{
     var previousStepperValue = 0
     
     func updateScores() {
-        for player in PlayerList.team {
+        for player in GamePlayerList.team {
             guard player.name == playerNameLabel.text else { continue }
-            guard let indexOfExistingPlayer = PlayerList.team.firstIndex(of: player) else { continue }
+            guard let indexOfExistingPlayer = GamePlayerList.team.firstIndex(of: player) else { continue }
             guard let currentScore = Int(playerScoreLabel.text ?? "0") else { continue }
-            guard let tableView = superview as? UITableView, let playerList = tableView.delegate as? PlayerList else { continue }
+            guard let tableView = superview as? UITableView, let playerList = tableView.delegate as? GamePlayerList else { continue }
             playerScoreLabel.text = String(currentScore)
-            PlayerList.team[indexOfExistingPlayer].score = currentScore
-            PlayerList.team.sort { $0.score > $1.score }
+            GamePlayerList.team[indexOfExistingPlayer].score = currentScore
+            GamePlayerList.team.sort { $0.score > $1.score }
             playerList.tableView.reloadData()
         }
     }
@@ -37,7 +37,7 @@ class PlayerCell: UITableViewCell{
         super.setSelected(selected, animated: animated)
     }
     
-    func update(with player: Player){
+    func update(with player: Player) {
         playerProfilePicture.image = player.profilePicture
         playerNameLabel.text = player.name
         playerScoreLabel.text = String(player.score)

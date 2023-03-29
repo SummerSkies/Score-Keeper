@@ -10,21 +10,27 @@ import UIKit
 class GamesList: UITableViewController {
 
     var games = [
-        Game(type: "Scum", winner: PlayerList.team[0], players: [PlayerList.team[0], PlayerList.team[1]]),
-        Game(type: "Uno", winner: PlayerList.team[2], players: [PlayerList.team[2], PlayerList.team[3]]),
-        Game(type: "Go Fish", winner: PlayerList.team[4], players: [PlayerList.team[1], PlayerList.team[4]])
+        Game(type: "Scum", winner: GamePlayerList.team[0], players: [GamePlayerList.team[0], GamePlayerList.team[1]]),
+        Game(type: "Uno", winner: GamePlayerList.team[2], players: [GamePlayerList.team[2], GamePlayerList.team[3]]),
+        Game(type: "Go Fish", winner: GamePlayerList.team[4], players: [GamePlayerList.team[1], GamePlayerList.team[4]])
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return games.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Game Cell", for: indexPath) as! GameCell
+        
+        let game = games[indexPath.row]
+        cell.update(with: game)
+        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -40,5 +46,15 @@ class GamesList: UITableViewController {
                 tableView.reloadData()
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "View Game" else { return }
+        guard let destination = segue.destination as? GameViewer else { return }
+        guard let cell = sender as? GameCell, let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        destination.game = games[indexPath.row]
     }
 }
