@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PlayerCellDelegate: AnyObject {
+    func updateScores(cell: PlayerCell)
+}
+
 class PlayerCell: UITableViewCell{
 
     @IBOutlet weak var playerProfilePicture: UIImageView!
@@ -14,19 +18,13 @@ class PlayerCell: UITableViewCell{
     @IBOutlet weak var scoreStepper: UIStepper!
     @IBOutlet weak var playerScoreLabel: UILabel!
     
+    weak var delegate: PlayerCellDelegate?
+    
     var previousStepperValue = 0
     
-    func updateScores() {
-        for player in GamePlayerList.team {
-            guard player.name == playerNameLabel.text else { continue }
-            guard let indexOfExistingPlayer = GamePlayerList.team.firstIndex(of: player) else { continue }
-            guard let currentScore = Int(playerScoreLabel.text ?? "0") else { continue }
-            guard let tableView = superview as? UITableView, let playerList = tableView.delegate as? GamePlayerList else { continue }
-            playerScoreLabel.text = String(currentScore)
-            GamePlayerList.team[indexOfExistingPlayer].score = currentScore
-            GamePlayerList.team.sort { $0.score > $1.score }
-            playerList.tableView.reloadData()
-        }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.delegate = nil
     }
     
     override func awakeFromNib() {
@@ -44,7 +42,8 @@ class PlayerCell: UITableViewCell{
     }
 
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        let currentScore = Int(playerScoreLabel.text!)!
+        guard let playerScore = playerScoreLabel.text else { return playerScoreLabel.text = "0" }
+        guard let currentScore = Int(playerScore) else { return playerScoreLabel.text = "0" }
         
         if scoreStepper.value > Double(previousStepperValue) {
             scoreStepper.value = Double(currentScore) + scoreStepper.stepValue
@@ -54,6 +53,6 @@ class PlayerCell: UITableViewCell{
             playerScoreLabel.text = String(Int(scoreStepper.value))
         }
         previousStepperValue = Int(scoreStepper.value)
-        updateScores()
+        self.delegate?.updateScores(cell: self)
    }
 }

@@ -2,43 +2,32 @@ import UIKit
 
 /*
  To-Dos:
+ Starting backwards;
+ -PlayerDetails √√√
+ -GamePlayerList
+    -Save √
+    -Cancel √
+ -GameViewer
+    -Pass save info back from GamePlayerList (edit) √
+ -GameList
+    -Pass save info back from GamePlayerList (new) √
+    -Pass save info back from GameViewer
  
- -View 3: GameDetails (for editing or adding games)
-    -From PlayerList
-        -Accessed through GamesList Plus button (add segue)
-        -Accessed through GameViewer Edit button (edit segue)
-    -"Edit Game" navigation title (edit segue) or "New Game" (add segue)
-    -2 sections:
-        0: "Game Details" section header, custom cell GameEditCell
-        -Game type label
-        -Game type text field
-        1: "Players" section header
-        -as is
-    -Plus button to "Add Player"
-    -cancel button
-    -save button
+ -Update winner in GameViewer
  
- Script 3: GamePlayerList
-    -Remove sorting when changing values -- order alphabetically by name instead
-    -Keep intelligent edit button
-    -Update all section calls to 1
-    -Pass info from game viewer
-    -Unwind segue to GameViewer (save and cancel buttons)
+ -USE POLISHES TO STOP CRASHES: your code only works if the info passed has all of its required info; Don't allow the user to save anything if it does not.
  
- View 4: PlayerDetails (add and edit players)
-    -As is
- 
- Script 4: PlayerDetails
-    -Update script calls as needed
- 
- UNIFY PLAYER LISTS
-    -Unique list of players per game
-    -Winner for each game is the player with the highest score
+ -No Winner Yet is never shown because score defaults to 0
+    
  
  Future Polishes:
  -Test keyboards on player detail view
  -Disable save button on deail view if applicable
  -Fix disabling steppers on player list (so it is not diabled from first run)
- -Replace all preparefor:(segue) funcs with IBSegueActions
+ -Replace all preparefor:(segue) funcs with IBSegueActions (SIMPLIFIY- I'm like 90% sure you have like 80x the amount of segue stuff than you need
  -make default cells for if no players or games have been created yet
+ -Default winner view if no winner exists
+ -Animate title change on the custom edit button
+ -Rename everything to be clearer:
+    -But to what?
  */

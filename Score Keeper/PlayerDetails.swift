@@ -23,7 +23,7 @@ class PlayerDetails: UIViewController {
         
         if let player = player {
             //If editing an existing player
-            navigationItem.title = player.name
+            navigationItem.title = "Edit Player"
             playerNameTextField.text = player.name
             playerScoreTextField.text = String(player.score)
         } else {
@@ -36,7 +36,7 @@ class PlayerDetails: UIViewController {
         super.prepare(for: segue, sender: sender)
         //Used to pass info to the GamePlayerList controller
         
-        guard segue.identifier == "Save Unwind" else { return }
+        guard segue.identifier == "Save Player Unwind" else { return }
         
         let name = playerNameTextField.text!
         let score = Int(playerScoreTextField.text ?? "") ?? 0
@@ -45,10 +45,10 @@ class PlayerDetails: UIViewController {
         if player != nil {
             player?.name = name
             player?.score = score
-            //If player exists, pass in values
+            //If player exists, update values
         } else {
             player = Player(name: name, score: score)
-            //Else, pass in an empty template for the user to fill in
+            //Else, create new player with provided values
         }
     }
     

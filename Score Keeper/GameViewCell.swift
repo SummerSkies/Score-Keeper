@@ -21,8 +21,13 @@ class GameViewCell: UITableViewCell {
     }
     
     func update(with game: Game) {
-        winnerImage.image = game.winner.profilePicture
-        winnerName.text = game.winner.name
+        if let winner = game.winner {
+            winnerImage.image = winner.profilePicture
+            winnerName.text = winner.name
+        } else {
+            winnerImage.image =  UIImage(systemName: "person.crop.circle.badge.questionmark")
+            winnerName.text = "No Winner Yet"
+        }
     }
 
 }

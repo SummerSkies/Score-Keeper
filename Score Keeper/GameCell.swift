@@ -24,7 +24,8 @@ class GameCell: UITableViewCell {
     func update(with game: Game) {
         gameIcon.image = game.icon
         gameTypeLabel.text = game.type
-        gameWinnerLabel.text = "Winner: \(game.winner.name)"
+        
+        guard let winner = game.winner else { return gameWinnerLabel.text = "No Winner Yet" }
+        gameWinnerLabel.text = "Winner: \(winner.name)"
     }
-
 }

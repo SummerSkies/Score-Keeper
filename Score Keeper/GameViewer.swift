@@ -7,18 +7,27 @@
 
 import UIKit
 
-class GameViewer: UITableViewController {
+protocol GameViewerDelegate: AnyObject {
+    func passGame(game: Game)
+}
 
+class GameViewer: UITableViewController, UINavigationControllerDelegate {
+
+    let gamesList = GamesList()
     var game: Game?
+    
+    weak var delegate: GameViewerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let game = game {
-            navigationItem.title = game.type
-        }
         
-        game?.players.sort { $0.score > $1.score }
-        tableView.reloadData()
+        navigationController?.delegate = self
+        if var game = game {
+            navigationItem.title = game.type
+            game.players.sort { $0.score > $1.score }
+            tableView.reloadData()
+            game.updateWinner()
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,8 +49,6 @@ class GameViewer: UITableViewController {
             let gameViewCell = tableView.dequeueReusableCell(withIdentifier: "Game View Cell", for: indexPath) as! GameViewCell
             gameViewCell.update(with: game)
             
-            gameViewCell.separatorInset = UIEdgeInsets(top: 0, left: tableView.frame.size.width, bottom: 0, right: 0);
-            
             return gameViewCell
         } else {
             let player = game!.players[indexPath.row]
@@ -54,9 +61,37 @@ class GameViewer: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection
                                 section: Int) -> String? {
-        if section == 1{
+        if section == 1 {
             return "Players"
         }
         return nil
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController === navigationController.viewControllers[0] {
+            if let game = game {
+                self.delegate = gamesList
+                self.delegate?.passGame(game: game)
+            }
+        }
+    }
+    
+    @IBAction func unwindFromGamePlayerList(segue: UIStoryboardSegue) {
+        guard segue.identifier == "Save Game Unwind" else { return }
+        let sourceViewController = segue.source as! GamePlayerList
+        
+        if let passedGame = sourceViewController.game {
+            game = passedGame
+        }
+        game?.updateWinner()
+        game?.players.sort { $0.score > $1.score }
+        tableView.reloadData()
+    }
+
+    @IBSegueAction func editGame(_ coder: NSCoder, sender: Any?) -> GamePlayerList? {
+        let detailView = GamePlayerList(coder: coder)
+        detailView?.game = game
+        
+        return detailView
     }
 }
