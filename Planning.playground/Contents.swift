@@ -2,18 +2,8 @@ import UIKit
 
 /*
  To-Dos:
- Starting backwards;
- -PlayerDetails √√√
- -GamePlayerList
-    -Save √
-    -Cancel √
- -GameViewer
-    -Pass save info back from GamePlayerList (edit) √
- -GameList
-    -Pass save info back from GamePlayerList (new) √
-    -Pass save info back from GameViewer
  
- -Update winner in GameViewer
+ All of the code is a mess -- straighten everything up before pushing forward or you'll never make any progress.
  
  -USE POLISHES TO STOP CRASHES: your code only works if the info passed has all of its required info; Don't allow the user to save anything if it does not.
  

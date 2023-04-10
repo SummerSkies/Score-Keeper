@@ -8,18 +8,18 @@
 import UIKit
 import Foundation
 
-class PlayerDetails: UIViewController {
+class EditAddPlayer: UIViewController {
     
     @IBOutlet weak var playerNameTextField: UITextField!
     @IBOutlet weak var playerScoreTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     
-    var player: Player?
-    let nonDidgitPattern = "[^0-9]"
+    var player: Player? //Used to pass in a player from a game when editing
+    let nonDidgitPattern = "[^0-9]" //Used to find if a string has any non-number characters
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playerScoreTextField.keyboardType = .numberPad
+        playerScoreTextField.keyboardType = .numberPad //Score feild uses a numberpad
         
         if let player = player {
             //If editing an existing player
@@ -34,9 +34,11 @@ class PlayerDetails: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        //Used to pass info to the GamePlayerList controller
+        //Used to pass info to Edit | Add Game; takes current values and passes them to the destination view.
+        //This is the sending end of @IBAction func unwindFromAddEditPlayer
         
         guard segue.identifier == "Save Player Unwind" else { return }
+        //Only pass info if using the correct segue
         
         let name = playerNameTextField.text!
         let score = Int(playerScoreTextField.text ?? "") ?? 0
@@ -45,13 +47,14 @@ class PlayerDetails: UIViewController {
         if player != nil {
             player?.name = name
             player?.score = score
-            //If player exists, update values
+            //If player exists, pass updated values
         } else {
             player = Player(name: name, score: score)
-            //Else, create new player with provided values
+            //Else, pass a new player with provided values
         }
     }
     
+    //If the user taps "return" on any specified keyboard, close the keyboard:
     @IBAction func nameReturnTapped(_ sender: UITextField) {
         sender.resignFirstResponder()
     }

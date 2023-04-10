@@ -12,7 +12,7 @@
         <!--Edit New Game-->
         <scene sceneID="j6n-rB-3lb">
             <objects>
-                <tableViewController id="ETq-XB-NQF" customClass="GamePlayerList" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ETq-XB-NQF" customClass="EditAddGame" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="zUj-fV-ZsL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,7 +145,7 @@
         <!--New Player-->
         <scene sceneID="uyg-i7-PQo">
             <objects>
-                <viewController id="Skw-le-CqV" customClass="PlayerDetails" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Skw-le-CqV" customClass="EditAddPlayer" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nnf-4k-7fr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,13 +259,13 @@
         <!--Game Type-->
         <scene sceneID="pVl-FZ-zS1">
             <objects>
-                <tableViewController id="mHX-cc-I0q" customClass="GameViewer" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="mHX-cc-I0q" customClass="SelectedGameView" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="tf9-ah-YRt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Game View Cell" id="BMT-mK-rLW" customClass="GameViewCell" customModule="Score_Keeper" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Game View Cell" id="BMT-mK-rLW" customClass="GameInfoCell" customModule="Score_Keeper" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="206.66667175292969"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BMT-mK-rLW" id="NVM-43-SDr">
@@ -376,7 +376,7 @@
         <!--Games-->
         <scene sceneID="dO6-zp-7tK">
             <objects>
-                <tableViewController id="LmX-e6-HDR" customClass="GamesList" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LmX-e6-HDR" customClass="ListOfGames" customModule="Score_Keeper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="70" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="3lP-Kr-rfc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -502,7 +502,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="raU-ZJ-aXn"/>
-        <segue reference="y4f-lS-5WI"/>
+        <segue reference="1dX-QC-vue"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Profile Placeholder Image" width="360" height="360"/>
